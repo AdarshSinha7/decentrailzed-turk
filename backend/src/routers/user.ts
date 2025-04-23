@@ -7,7 +7,7 @@ import {  TOTAL_DECIMALS } from "../config";
 import { authMiddlewareee } from "../middleware";
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 const { S3Client, GetObjectCommand } = require("@aws-sdk/client-s3");
-import { createPresignedPost } from '@aws-sdk/s3-presigned-post'
+import { createPresignedPost } from '@aws-sdk/s3-presigned-post';
 import { createTaskInput } from "../types";
 import { forEachChild } from "typescript";
 import { Connection, PublicKey } from "@solana/web3.js";
