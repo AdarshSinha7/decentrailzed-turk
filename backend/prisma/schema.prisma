@@ -17,7 +17,7 @@ model User {
   id         Int     @id @default(autoincrement())
   address    String  @unique
   tasks      Task[]
-  payouts       Payouts[]
+ // payouts       Payouts[]
 
 }
 
@@ -28,6 +28,7 @@ model Worker {
   submissions   Submission[]
   pending_amount     Int      
   locked_amount    Int
+    payouts       Payouts[]
 }
 
 model Task{
@@ -63,10 +64,18 @@ model Submission{
   @@unique([worker_id,task_id])
 }
 
+// model Payouts {
+//   id            Int     @id @default(autoincrement())
+//   user_id       Int
+//   user          User    @relation(fields: [user_id], references: [id])
+//   amount        Int
+//   signature     String
+//   status        TxnStatus
+// }
 model Payouts {
   id            Int     @id @default(autoincrement())
-  user_id       Int
-  user          User    @relation(fields: [user_id], references: [id])
+  user_id       Int    // rename to worker_id for clarity
+  worker        Worker  @relation(fields: [user_id], references: [id])
   amount        Int
   signature     String
   status        TxnStatus
